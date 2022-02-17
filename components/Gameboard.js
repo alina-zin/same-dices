@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Text, View, Pressable } from 'react-native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import styles from '../style/style';
+import { render } from 'react-dom';
 
 
 
@@ -64,17 +65,16 @@ export default function Gameboard() {
         }
     }, [nbrOfThrowsLeft]);
 
-
     const row = [];
     for (let i = 0; i< NBR_OF_DICES; i++) {
-        row.push(
-            <Pressable
-                    key = {"row" + i}
-                    onPress = {() => selectDice(i)}>
-                <MaterialCommunityIcons
+            row.push(
+        <Pressable
+                key = {"row" + i}
+                onPress = {() => selectDice(i)}>
+            <MaterialCommunityIcons
                     name = {board[i]}
                     key = {"row" + i}
-                    size = {50}
+                    size = {50}                        
                     color = {getDiceColor(i)}>
                 </MaterialCommunityIcons>
             </Pressable>
@@ -92,5 +92,4 @@ export default function Gameboard() {
             </Pressable>
         </View>
     )
-
 }
